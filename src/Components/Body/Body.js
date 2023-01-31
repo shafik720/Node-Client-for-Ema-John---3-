@@ -72,10 +72,11 @@ const Body = () => {
                     <Cart cart={cart}></Cart>
                 </div>
             </div>
-            <h2>Hellow World</h2>
+            <div className="my-5 text-center pagination">
             {
-                [...Array(pageCount).keys()].map(index=><button>{index}</button>)
+                [...Array(pageCount).keys()].map(index=><button>{index + 1}</button>)
             }
+            </div>
         </div>
     );
 };

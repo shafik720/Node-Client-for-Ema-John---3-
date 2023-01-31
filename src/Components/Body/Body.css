@@ -17,3 +17,16 @@
     border-left: 2px solid darkblue;
     padding: 0 12px;
 }
+
+.pagination{
+    display: flex;
+    justify-content: center;
+}
+.pagination button{
+    margin: 0 5px;
+    padding: 5px 15px;
+    border: 2px solid darkorange;
+    color: black;
+    font-weight: 700;
+    background: white;
+}
