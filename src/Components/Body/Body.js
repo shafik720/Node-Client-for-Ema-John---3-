@@ -45,6 +45,17 @@ const Body = () => {
         setCart(freshCart);
     }, [products])
 
+    // pagination
+    const[pageCount, setPageCount] = useState(0);
+    useEffect(()=>{
+        fetch('http://localhost:5000/productQuantity')
+        .then(res=>res.json())
+        .then(data=>{
+            const counter = Math.ceil(data.result / 10);
+            setPageCount(counter);
+        });
+    },[products])
+
     return (
         <div className="">
             <div className="body-div">
@@ -60,8 +71,11 @@ const Body = () => {
                 <div className="body-right">
                     <Cart cart={cart}></Cart>
                 </div>
-
             </div>
+            <h2>Hellow World</h2>
+            {
+                [...Array(pageCount).keys()].map(index=><button>{index}</button>)
+            }
         </div>
     );
 };
