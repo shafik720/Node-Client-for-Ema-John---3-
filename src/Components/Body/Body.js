@@ -7,10 +7,7 @@ import './Body.css'
 
 const Body = () => {
 
-
     let [products, setProducts] = useProducts();
-
-
     let [cart, setCart] = useState([]);
     function handleCart(selectedProduct) {
         let newCart = [];
@@ -48,7 +45,7 @@ const Body = () => {
     // pagination
     const[pageCount, setPageCount] = useState(0);
     useEffect(()=>{
-        fetch('http://localhost:5000/productQuantity')
+        fetch('http://localhost:5000/productCount')
         .then(res=>res.json())
         .then(data=>{
             const counter = Math.ceil(data.result / 10);
