@@ -51,7 +51,9 @@ const Body = () => {
             const counter = Math.ceil(data.result / 10);
             setPageCount(counter);
         });
-    },[products])
+    },[products]);
+
+    const[page,setPage] = useState(0);
 
     return (
         <div className="">
@@ -71,7 +73,10 @@ const Body = () => {
             </div>
             <div className="my-5 text-center pagination">
             {
-                [...Array(pageCount).keys()].map(index=><button>{index + 1}</button>)
+                [...Array(pageCount).keys()].map(index=><button
+                    onClick={()=>setPage(index)}
+                    className={page == index ? 'selected' : ''}
+                >{index + 1}</button>)
             }
             </div>
         </div>
