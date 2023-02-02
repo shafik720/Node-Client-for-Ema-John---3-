@@ -7,7 +7,13 @@ import './Body.css'
 
 const Body = () => {
 
-    let [products, setProducts] = useProducts();
+    const [products, setProducts] = useState([]);
+    useEffect(()=>{
+        fetch(`http://localhost:5000/product?page=${page}&size=${pageSize}`)
+        .then(res=>res.json())
+        .then(data=>setProducts(data))
+    },[]);
+    
     let [cart, setCart] = useState([]);
     function handleCart(selectedProduct) {
         let newCart = [];
@@ -56,6 +62,7 @@ const Body = () => {
     const[page,setPage] = useState(0);
     const[pageSize, setPageSize] = useState(10);
 
+    // Loading product according to search query
 
     return (
         <div className="">
