@@ -42,7 +42,7 @@ const Body = () => {
         setCart(freshCart);
     }, [products])
 
-    // pagination
+    //------------- pagination
     const[pageCount, setPageCount] = useState(0);
     useEffect(()=>{
         fetch('http://localhost:5000/productCount')
@@ -54,6 +54,8 @@ const Body = () => {
     },[products]);
 
     const[page,setPage] = useState(0);
+    const[pageSize, setPageSize] = useState(10);
+
 
     return (
         <div className="">
@@ -78,6 +80,12 @@ const Body = () => {
                     className={page == index ? 'selected' : ''}
                 >{index + 1}</button>)
             }
+            {pageSize}
+            <select onChange={e=>setPageSize(e.target.value)}>
+                <option selected value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+            </select>
             </div>
         </div>
     );
