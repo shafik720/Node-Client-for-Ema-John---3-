@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import useCart from '../../hooks/useCart';
 import useProducts from '../../hooks/useProducts';
 import { addToDb, getStoredCart } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
@@ -17,7 +18,7 @@ const Body = () => {
         console.log('ok');
     },[page, pageSize]);
     
-    let [cart, setCart] = useState([]);
+    let [cart, setCart] = useCart();
     function handleCart(selectedProduct) {
         let newCart = [];
         let exist = cart.find(product => product._id === selectedProduct._id);
@@ -36,20 +37,6 @@ const Body = () => {
     }
 
 
-    useEffect(() => {
-        const storedCart = getStoredCart();
-        let freshCart = [];
-        for (let productId in storedCart) {
-            let addedProduct = products.find(product => product._id === productId);
-
-            if (addedProduct) {
-                let quantity = storedCart[productId];
-                addedProduct.quantity = quantity;
-                freshCart.push(addedProduct);
-            }
-        }
-        setCart(freshCart);
-    }, [products])
 
     //------------- pagination
     const[pageCount, setPageCount] = useState(0);
