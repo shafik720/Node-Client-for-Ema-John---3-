@@ -9,7 +9,7 @@ import { getStoredCart, removeFromDb } from '../../utilities/fakedb';
 const Orders = () => {
     let [products, setProducts] = useProducts();
 
-    let [cart, setCart] = useCart(products);
+    let [cart, setCart] = useCart();
 
     function deleteOrders(element){        
         removeFromDb(element._id); 
